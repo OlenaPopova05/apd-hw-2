@@ -1,12 +1,12 @@
 import XCTest
 @testable import TaskProcessor
 
-private enum SampleWorkerError: Error {
+enum SampleWorkerError: Error {
     case expected
     case workerShouldNotRun
 }
 
-private actor Gate {
+actor Gate {
     private var releasedIDs: Set<String> = []
     private var waiters: [String: CheckedContinuation<Void, Never>] = [:]
     private var waitingObservers: [String: [CheckedContinuation<Void, Never>]] = [:]
